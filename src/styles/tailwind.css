@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,31 +7,31 @@
 
 @layer base {
   :root {
-    /* Core System Colors */
-    --color-background: #FFFFFF; /* white */
-    --color-foreground: #0F172A; /* slate-900 */
-    --color-border: #E2E8F0; /* slate-200 */
-    --color-input: #FFFFFF; /* white */
-    --color-ring: #059669; /* emerald-600 */
+    /* Core System Colors - Modern Light Theme */
+    --color-background: #F8F9FA; /* light gray background */
+    --color-foreground: #1A1D29; /* dark text */
+    --color-border: #E5E7EB; /* subtle borders */
+    --color-input: #FFFFFF; /* white inputs */
+    --color-ring: #2563EB; /* blue-600 focus ring */
     
     /* Card Colors */
-    --color-card: #FFFFFF; /* white */
-    --color-card-foreground: #0F172A; /* slate-900 */
+    --color-card: #FFFFFF; /* white cards */
+    --color-card-foreground: #1A1D29; /* dark text on cards */
     
     /* Popover Colors */
     --color-popover: #FFFFFF; /* white */
-    --color-popover-foreground: #0F172A; /* slate-900 */
+    --color-popover-foreground: #1A1D29; /* dark text */
     
     /* Muted Colors */
-    --color-muted: #F8FAFC; /* slate-50 */
-    --color-muted-foreground: #64748B; /* slate-500 */
+    --color-muted: #F3F4F6; /* gray-100 */
+    --color-muted-foreground: #6B7280; /* gray-500 */
     
-    /* Primary Colors */
-    --color-primary: #059669; /* emerald-600 */
+    /* Primary Colors - Blue Theme */
+    --color-primary: #2563EB; /* blue-600 */
     --color-primary-foreground: #FFFFFF; /* white */
     
     /* Secondary Colors */
-    --color-secondary: #475569; /* slate-600 */
+    --color-secondary: #64748B; /* slate-500 */
     --color-secondary-foreground: #FFFFFF; /* white */
     
     /* Accent Colors */
@@ -46,7 +44,7 @@
     
     /* Warning Colors */
     --color-warning: #F59E0B; /* amber-500 */
-    --color-warning-foreground: #FFFFFF; /* white */
+    --color-warning-foreground: #1F2937; /* gray-800 */
     
     /* Error/Destructive Colors */
     --color-error: #EF4444; /* red-500 */
@@ -62,25 +60,44 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer utilities {
   .font-heading {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
   }
   
   .font-body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
   }
   
   .font-caption {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
   }
   
   .font-data {
     font-family: 'Inter', monospace;
+  }
+
+  /* Modern card styles */
+  .card-modern {
+    @apply bg-card border border-border rounded-2xl shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground rounded-xl px-6 py-3 font-medium transition-all duration-200 hover:bg-primary/90 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-card text-foreground border border-border rounded-xl px-6 py-3 font-medium transition-all duration-200 hover:bg-muted hover:shadow-sm;
   }
 
   /* Scrollbar styles */
@@ -110,26 +127,15 @@
 
   /* Modern shadows */
   .shadow-card {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
   }
   
   .shadow-modal {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
   }
 
-  /* Smooth transitions */
-  .transition-smooth {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Modern button styles */
-  .btn-modern {
-    @apply px-6 py-3 rounded-xl font-medium transition-all duration-200 transform hover:scale-105 active:scale-95;
-  }
-
-  /* Card hover effects */
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  .shadow-soft {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
   }
 
   /* Enhanced animations */
@@ -141,41 +147,35 @@
     animation: slide-up 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .animate-bounce-in {
-    animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  .animate-scale-in {
+    animation: scale-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .animate-slide-down {
     animation: slide-down 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .animate-scale-in {
-    animation: scale-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Gradient backgrounds */
+  .bg-gradient-modern {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   }
 
-  .animate-step-transition {
-    animation: step-transition 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  .bg-gradient-blue {
+    background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
   }
 
-  .animate-slide-in-left {
-    animation: slide-in-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Modern glass effect */
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
   }
 
-  .animate-slide-out-left {
-    animation: slide-out-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Smooth hover transitions */
+  /* Hover effects */
   .hover-lift {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-2;
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
   }
 
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-105;
-  }
-
-  .hover-glow {
-    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/25;
   }
 
   /* Remove hover animations for auth forms */
@@ -183,29 +183,46 @@
   .auth-form .card-hover {
     @apply hover:shadow-none hover:translate-y-0;
   }
+}
 
-  /* Leaflet map styles */
-  .leaflet-container {
-    @apply rounded-lg;
+@keyframes fade-in {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
   }
-
-  .leaflet-popup-content-wrapper {
-    @apply bg-card border border-border rounded-lg shadow-lg;
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
   }
+}
 
-  .leaflet-popup-content {
-    @apply text-foreground;
+@keyframes slide-up {
+  from { 
+    transform: translateY(100%); 
   }
-
-  .leaflet-popup-tip {
-    @apply bg-card;
+  to { 
+    transform: translateY(0); 
   }
+}
 
-  .custom-marker {
-    @apply transition-all duration-200 hover:scale-110;
+@keyframes scale-in {
+  from { 
+    transform: scale(0.95); 
+    opacity: 0; 
   }
+  to { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+}
 
-  .user-location-marker {
-    @apply z-50;
+@keyframes slide-down {
+  from { 
+    transform: translateY(-10px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
   }
 }

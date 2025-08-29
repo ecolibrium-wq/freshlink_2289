@@ -22,17 +22,17 @@ const CategoryChips = ({ className = '' }) => {
 
     return (
         <div className={`${className}`}>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-6">
                 {categories?.map((category) => (
                     <button
                         key={category?.id}
                         onClick={() => handleCategoryClick(category?.id)}
-                        className="flex flex-col items-center p-4 bg-card border border-border rounded-lg hover:shadow-md hover:border-primary/20 transition-all duration-200 group"
+                        className="flex flex-col items-center p-6 bg-card border border-border rounded-2xl hover:shadow-medium hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 group"
                     >
-                        <div className={`w-12 h-12 ${category?.bgColor} rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-200`}>
-                            <Icon name={category?.icon} size={24} className={category?.color} />
+                        <div className={`w-16 h-16 ${category?.bgColor} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-soft`}>
+                            <Icon name={category?.icon} size={28} className={category?.color} />
                         </div>
-                        <h3 className="font-body font-semibold text-sm text-foreground mb-1">
+                        <h3 className="font-heading text-base text-foreground">
                             {category?.label}
                         </h3>
                     </button>

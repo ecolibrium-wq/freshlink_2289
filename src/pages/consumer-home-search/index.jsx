@@ -330,19 +330,19 @@ const ConsumerHomeSearch = () => {
 
             {/* Main Content */}
             <main
-                className="container mx-auto px-4 py-6 pb-20 md:pb-12 pt-20"
+                className="container mx-auto px-6 py-8 pb-24 md:pb-16 pt-24"
                 onTouchStart={handlePullToRefresh}
             >
                 {/* Hero Carousel */}
-                <HeroCarousel className="mb-8" />
+                <HeroCarousel className="mb-12" />
 
                 {/* Category Chips */}
-                <div className="mb-8">
-                    <div className="mb-6">
-                        <h2 className="font-heading font-bold text-xl text-foreground mb-1">
+                <div className="mb-12">
+                    <div className="mb-8">
+                        <h2 className="font-heading text-3xl text-foreground mb-3">
                             Busque por Categorias
                         </h2>
-                        <p className="text-sm font-body text-muted-foreground">
+                        <p className="text-lg text-muted-foreground">
                             Encontre exatamente o que você procura
                         </p>
                     </div>
@@ -350,13 +350,13 @@ const ConsumerHomeSearch = () => {
                 </div>
 
                 {/* Featured Products */}
-                <FeaturedProducts className="mb-8" onProductClick={handleProductClick} />
+                <FeaturedProducts className="mb-12" onProductClick={handleProductClick} />
 
                 {/* Promotional Banners */}
-                <PromotionalBanners className="mb-8" />
+                <PromotionalBanners className="mb-12" />
 
                 {/* Location Selector */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-8">
                     <div className="flex items-center space-x-4">
                         <LocationSelector
                             currentLocation={currentLocation}
@@ -369,12 +369,12 @@ const ConsumerHomeSearch = () => {
                 </div>
 
                 {/* Results Header */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-8">
                     <div>
-                        <h2 className="font-heading font-bold text-xl text-foreground mb-1">
+                        <h2 className="font-heading text-3xl text-foreground mb-3">
                             {searchQuery ? `Resultados para "${searchQuery}"` : 'Vendedores Próximos'}
                         </h2>
-                        <p className="text-sm font-body text-muted-foreground">
+                        <p className="text-lg text-muted-foreground">
                             {vendors?.length} {vendors?.length === 1 ? 'vendedor encontrado' : 'vendedores encontrados'} em {currentLocation?.name}
                         </p>
                     </div>
@@ -390,7 +390,7 @@ const ConsumerHomeSearch = () => {
                         >
                             Ver no Mapa
                         </Button>
-                        <button className="flex items-center space-x-2 px-3 py-2 bg-muted border border-border rounded-lg text-sm font-body font-medium text-foreground hover:bg-muted/80 transition-colors duration-200">
+                        <button className="flex items-center space-x-2 px-4 py-3 bg-card border border-border rounded-xl text-sm font-medium text-foreground hover:bg-muted/50 hover:shadow-soft transition-all duration-200">
                             <span>Recomendados</span>
                             <Icon name="ChevronDown" size={16} />
                         </button>
@@ -415,7 +415,7 @@ const ConsumerHomeSearch = () => {
                     onLoadMore={handleLoadMore}
                     hasMore={hasMore}
                     loadingMore={loadingMore}
-                    className="mb-8"
+                    className="mb-12"
                     id="vendor-grid"
                 />
             </main>

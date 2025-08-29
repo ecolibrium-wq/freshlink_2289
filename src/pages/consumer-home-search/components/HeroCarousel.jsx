@@ -62,8 +62,8 @@ const HeroCarousel = ({ className = '' }) => {
     };
 
     return (
-        <div className={`relative overflow-hidden rounded-2xl shadow-lg ${className}`}>
-            <div className="relative h-72 md:h-96">
+        <div className={`relative overflow-hidden rounded-3xl shadow-strong ${className}`}>
+            <div className="relative h-80 md:h-[500px]">
                 {slides.map((slide, index) => (
                     <div
                         key={slide.id}
@@ -75,20 +75,20 @@ const HeroCarousel = ({ className = '' }) => {
                             alt={slide.title}
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
 
                         <div className="absolute inset-0 flex items-center">
-                            <div className="container mx-auto px-8">
-                                <div className="max-w-xl text-white">
-                                    <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 leading-tight">
+                            <div className="container mx-auto px-12">
+                                <div className="max-w-2xl text-white">
+                                    <h2 className="text-4xl md:text-6xl font-heading mb-6 leading-tight">
                                         {slide.title}
                                     </h2>
-                                    <p className="text-base md:text-lg font-body mb-8 opacity-95 leading-relaxed">
+                                    <p className="text-lg md:text-xl mb-10 opacity-90 leading-relaxed">
                                         {slide.subtitle}
                                     </p>
                                     <button
                                         onClick={slide.ctaAction}
-                                        className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-xl font-body font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                                        className="bg-gradient-to-r from-primary to-accent text-white px-10 py-4 rounded-2xl font-heading font-semibold transition-all duration-300 transform hover:scale-105 shadow-strong hover:shadow-modal"
                                     >
                                         {slide.cta}
                                     </button>
@@ -102,34 +102,34 @@ const HeroCarousel = ({ className = '' }) => {
             {/* Navigation Arrows */}
             <button
                 onClick={prevSlide}
-                className="absolute left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-lg"
+                className="absolute left-8 top-1/2 transform -translate-y-1/2 w-14 h-14 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-medium"
             >
                 <Icon name="ChevronLeft" size={24} />
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute right-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-lg"
+                className="absolute right-8 top-1/2 transform -translate-y-1/2 w-14 h-14 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-medium"
             >
                 <Icon name="ChevronRight" size={24} />
             </button>
 
             {/* Dots Indicator */}
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4">
                 {slides.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => goToSlide(index)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-white scale-125' : 'bg-white/60 hover:bg-white/80'
+                        className={`w-4 h-4 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-white scale-125 shadow-soft' : 'bg-white/60 hover:bg-white/80'
                             }`}
                     />
                 ))}
             </div>
 
             {/* Auto-play indicator */}
-            <div className="absolute top-6 right-6">
+            <div className="absolute top-8 right-8">
                 <button
                     onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                    className="w-10 h-10 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-lg"
+                    className="w-12 h-12 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-medium"
                 >
                     <Icon name={isAutoPlaying ? "Pause" : "Play"} size={18} />
                 </button>

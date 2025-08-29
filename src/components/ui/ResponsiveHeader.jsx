@@ -126,14 +126,14 @@ const ResponsiveHeader = ({ className = '' }) => {
         <header 
             className={`bg-card border-b border-border fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out ${
                 isVisible ? 'translate-y-0' : '-translate-y-full'
-            } ${className}`}
+            } backdrop-blur-md bg-card/95 ${className}`}
         >
             <div className="container mx-auto px-4">
-                <div className="flex items-center justify-between h-16">
+                <div className="flex items-center justify-between h-20">
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
+                        className="md:hidden p-3 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
                     >
                         <Icon name={isMobileMenuOpen ? "X" : "Menu"} size={24} />
                     </button>
@@ -145,17 +145,19 @@ const ResponsiveHeader = ({ className = '' }) => {
                             className="hover:opacity-80 transition-opacity duration-200"
                         >
                             {/* Logo para desktop (>767px) - esquerda */}
-                            <img 
-                                src="/path-to-your-logotext.png" 
-                                alt="FreshLink" 
-                                className="hidden min-[768px]:block h-8"
-                            />
+                            <div className="hidden min-[768px]:flex items-center space-x-3">
+                                <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-soft">
+                                    <Icon name="Leaf" size={24} color="white" />
+                                </div>
+                                <span className="font-heading text-2xl text-foreground">FreshLink</span>
+                            </div>
                             {/* Logo para mobile (≤767px) - centro */}
-                            <img 
-                                src="/path-to-your-logotext.png" 
-                                alt="FreshLink" 
-                                className="block min-[768px]:hidden h-8"
-                            />
+                            <div className="flex min-[768px]:hidden items-center space-x-3">
+                                <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-soft">
+                                    <Icon name="Leaf" size={24} color="white" />
+                                </div>
+                                <span className="font-heading text-2xl text-foreground">FreshLink</span>
+                            </div>
                         </button>
                     </div>
 
@@ -163,7 +165,7 @@ const ResponsiveHeader = ({ className = '' }) => {
                     <nav className="hidden md:flex items-center space-x-1 flex-1 justify-center">
                         <button
                             onClick={() => navigate('/consumer-home-search')}
-                            className={getNavLinkClass('/consumer-home-search')}
+                            className="flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted/50"
                         >
                             <Icon name="Home" size={18} />
                             <span className="font-medium">Início</span>
@@ -171,7 +173,7 @@ const ResponsiveHeader = ({ className = '' }) => {
 
                         <button
                             onClick={() => navigate('/products')}
-                            className={getNavLinkClass('/products')}
+                            className="flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted/50"
                         >
                             <Icon name="Package" size={18} />
                             <span className="font-medium">Produtos</span>
@@ -179,7 +181,7 @@ const ResponsiveHeader = ({ className = '' }) => {
 
                         <button
                             onClick={() => navigate('/vendors')}
-                            className={getNavLinkClass('/vendors')}
+                            className="flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted/50"
                         >
                             <Icon name="Store" size={18} />
                             <span className="font-medium">Vendedores</span>
@@ -187,7 +189,7 @@ const ResponsiveHeader = ({ className = '' }) => {
 
                         <button
                             onClick={() => navigate('/vendors-map')}
-                            className={getNavLinkClass('/vendors-map')}
+                            className="flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted/50"
                         >
                             <Icon name="Map" size={18} />
                             <span className="font-medium">Mapa</span>
@@ -200,9 +202,9 @@ const ResponsiveHeader = ({ className = '' }) => {
                             <div className="relative" ref={dropdownRef}>
                                 <button
                                     onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
-                                    className="flex items-center space-x-2 p-2 rounded-lg hover:bg-muted transition-all duration-200"
+                                    className="flex items-center space-x-3 p-2 rounded-xl hover:bg-muted/50 transition-all duration-200"
                                 >
-                                    <div className="w-9 h-9 rounded-full overflow-hidden">
+                                    <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-border">
                                         <Image
                                             src={getProfileImage()}
                                             alt="Perfil"
@@ -217,11 +219,11 @@ const ResponsiveHeader = ({ className = '' }) => {
 
                                 {/* Profile Dropdown */}
                                 {isProfileDropdownOpen && (
-                                    <div className="absolute right-0 top-full mt-2 w-60 bg-card border border-border rounded-lg shadow-lg py-2 z-50">
+                                    <div className="absolute right-0 top-full mt-3 w-64 bg-card border border-border rounded-2xl shadow-modal py-3 z-50 animate-slide-down">
                                         {/* User Info Header */}
-                                        <div className="px-4 py-3 border-b border-border">
+                                        <div className="px-6 py-4 border-b border-border">
                                             <div className="flex items-center space-x-3">
-                                                <div className="w-10 h-10 rounded-full overflow-hidden">
+                                                <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-border">
                                                     <Image
                                                         src={getProfileImage()}
                                                         alt="Perfil"
@@ -229,17 +231,17 @@ const ResponsiveHeader = ({ className = '' }) => {
                                                     />
                                                 </div>
                                                 <div>
-                                                    <p className="text-sm font-semibold text-foreground">{getUserName()}</p>
-                                                    <p className="text-xs text-muted-foreground capitalize">{userAuth?.type || 'Usuário'}</p>
+                                                    <p className="font-heading font-semibold text-foreground">{getUserName()}</p>
+                                                    <p className="text-sm text-muted-foreground capitalize">{userAuth?.type || 'Usuário'}</p>
                                                 </div>
                                             </div>
                                         </div>
 
                                         {/* Menu Items */}
-                                        <div className="py-2">
+                                        <div className="py-3">
                                             <button
                                                 onClick={handleProfileClick}
-                                                className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors duration-200"
+                                                className="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-colors duration-200"
                                             >
                                                 <Icon name="User" size={18} className="text-muted-foreground" />
                                                 <span>Meu Perfil</span>
@@ -252,7 +254,7 @@ const ResponsiveHeader = ({ className = '' }) => {
                                                             navigate('/vendor-dashboard');
                                                             setIsProfileDropdownOpen(false);
                                                         }}
-                                                        className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors duration-200"
+                                                        className="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-colors duration-200"
                                                     >
                                                         <Icon name="BarChart3" size={18} className="text-muted-foreground" />
                                                         <span>Dashboard</span>
@@ -262,7 +264,7 @@ const ResponsiveHeader = ({ className = '' }) => {
                                                             navigate('/product-management');
                                                             setIsProfileDropdownOpen(false);
                                                         }}
-                                                        className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors duration-200"
+                                                        className="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-colors duration-200"
                                                     >
                                                         <Icon name="Package" size={18} className="text-muted-foreground" />
                                                         <span>Gerenciar Produtos</span>
@@ -271,10 +273,10 @@ const ResponsiveHeader = ({ className = '' }) => {
                                             )}
                                         </div>
 
-                                        <div className="border-t border-border pt-2">
+                                        <div className="border-t border-border pt-3">
                                             <button
                                                 onClick={handleLogout}
-                                                className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors duration-200"
+                                                className="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-error hover:bg-error/5 transition-colors duration-200"
                                             >
                                                 <Icon name="LogOut" size={18} />
                                                 <span>Sair</span>
@@ -289,23 +291,23 @@ const ResponsiveHeader = ({ className = '' }) => {
                                 <div className="hidden min-[768px]:flex items-center space-x-2">
                                     <button
                                         onClick={() => navigate('/auth')}
-                                        className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-300 transition-colors duration-200"
+                                        className="w-10 h-10 bg-muted rounded-xl flex items-center justify-center text-muted-foreground hover:bg-muted/80 hover:text-foreground transition-all duration-200"
                                     >
                                         <Icon name="User" size={16} />
                                     </button>
                                     <button
                                         onClick={() => navigate('/auth')}
-                                        className="flex flex-col leading-tight text-gray-700 hover:text-gray-900 transition-colors duration-200"
+                                        className="flex flex-col leading-tight text-foreground hover:text-primary transition-colors duration-200"
                                     >
-                                        <span className="text-xs font-medium">Entre ou</span>
-                                        <span className="text-xs font-medium">cadastre-se</span>
+                                        <span className="text-sm font-medium">Entre ou</span>
+                                        <span className="text-sm font-medium">cadastre-se</span>
                                     </button>
                                 </div>
                                 
                                 {/* Botão de login mobile/tablet (≤767px) */}
                                 <button
                                     onClick={() => navigate('/auth')}
-                                    className="min-[768px]:hidden w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-300 transition-colors duration-200"
+                                    className="min-[768px]:hidden w-10 h-10 bg-muted rounded-xl flex items-center justify-center text-muted-foreground hover:bg-muted/80 hover:text-foreground transition-all duration-200"
                                 >
                                     <Icon name="User" size={16} />
                                 </button>
@@ -316,14 +318,14 @@ const ResponsiveHeader = ({ className = '' }) => {
 
                 {/* Mobile Menu */}
                 {isMobileMenuOpen && isVisible && (
-                    <div className="md:hidden absolute top-16 left-0 right-0 bg-card border-b border-border shadow-lg max-h-96 overflow-y-auto">
-                        <nav className="px-4 py-6 space-y-1">
+                    <div className="md:hidden absolute top-20 left-0 right-0 bg-card/95 backdrop-blur-md border-b border-border shadow-modal max-h-96 overflow-y-auto animate-slide-down">
+                        <nav className="px-6 py-8 space-y-2">
                             <button
                                 onClick={() => {
                                     navigate('/consumer-home-search');
                                     setIsMobileMenuOpen(false);
                                 }}
-                                className="w-full flex items-center space-x-4 px-4 py-3.5 rounded-lg text-sm font-body font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
+                                className="w-full flex items-center space-x-4 px-4 py-4 rounded-xl text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
                             >
                                 <Icon name="Home" size={20} />
                                 <span>Início</span>
@@ -334,7 +336,7 @@ const ResponsiveHeader = ({ className = '' }) => {
                                     navigate('/products');
                                     setIsMobileMenuOpen(false);
                                 }}
-                                className="w-full flex items-center space-x-4 px-4 py-3.5 rounded-lg text-sm font-body font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
+                                className="w-full flex items-center space-x-4 px-4 py-4 rounded-xl text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
                             >
                                 <Icon name="Package" size={20} />
                                 <span>Produtos</span>
@@ -345,7 +347,7 @@ const ResponsiveHeader = ({ className = '' }) => {
                                     navigate('/vendors');
                                     setIsMobileMenuOpen(false);
                                 }}
-                                className="w-full flex items-center space-x-4 px-4 py-3.5 rounded-lg text-sm font-body font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
+                                className="w-full flex items-center space-x-4 px-4 py-4 rounded-xl text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
                             >
                                 <Icon name="Store" size={20} />
                                 <span>Vendedores</span>
@@ -356,20 +358,20 @@ const ResponsiveHeader = ({ className = '' }) => {
                                     navigate('/vendors-map');
                                     setIsMobileMenuOpen(false);
                                 }}
-                                className="w-full flex items-center space-x-4 px-4 py-3.5 rounded-lg text-sm font-body font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
+                                className="w-full flex items-center space-x-4 px-4 py-4 rounded-xl text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
                             >
                                 <Icon name="Map" size={20} />
                                 <span>Mapa</span>
                             </button>
 
                             {!userAuth && (
-                                <div className="pt-6 border-t border-border">
+                                <div className="pt-6 mt-4 border-t border-border">
                                     <button
                                         onClick={() => {
                                             navigate('/auth');
                                             setIsMobileMenuOpen(false);
                                         }}
-                                        className="w-full flex items-center space-x-4 px-4 py-3.5 rounded-lg text-sm font-body font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
+                                        className="w-full flex items-center space-x-4 px-4 py-4 rounded-xl text-base font-medium text-primary hover:bg-primary/5 transition-all duration-200"
                                     >
                                         <Icon name="User" size={20} />
                                         <span>Entre ou cadastre-se</span>
